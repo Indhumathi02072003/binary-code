@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class BinaryToDecimalConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a binary number: ");
+        String binaryStr = scanner.nextLine();
+
+        int decimal = binaryToDecimal(binaryStr);
+
+        System.out.println("Decimal equivalent: " + decimal);
+
+        scanner.close();
+    }
+
+    public static int binaryToDecimal(String binaryStr) {
+        int decimal = 0;
+        int power = 0;
+
+        for (int i = binaryStr.length() - 1; i >= 0; i--) {
+            char digit = binaryStr.charAt(i);
+            if (digit == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        return decimal;
+    }
+}
